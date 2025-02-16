@@ -2,7 +2,20 @@ import { useState, useEffect } from 'react';
 
 
 export default function Home() {
-    
+    interface Pokemon {
+        id: number;
+        name: string;
+        imageUrlHiRes: string;
+        nationalPokedexNumber: number;
+        supertype: string;
+        hp: string;
+        type: string;
+        ability?: { name: string; text: string };
+        retreatCost?: number;
+        weaknesses?: { type: string; value: string }[];
+        resistances?: { type: string; value: string }[];
+        attacks?: { name: string; damage: string; text: string }[];
+      }
     // botton+
     const [showSearch, setShowSearch] = useState<boolean>(false);
     const [search, setSearch] = useState<string>(""); // เก็บค่าค้นหา
