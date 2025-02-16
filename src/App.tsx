@@ -1,4 +1,4 @@
-import { AppRouter } from './assets/routers/Index'
+import { AppRouter } from './routers/Index'
 
 export default function App() {
   return (

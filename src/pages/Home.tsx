@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 
+
 export default function Home() {
+    
     // botton+
     const [showSearch, setShowSearch] = useState(false); 
     const [search, setSearch] = useState(""); // เก็บค่าค้นหา
@@ -10,7 +12,7 @@ export default function Home() {
 
     // โหลดข้อมูลจาก JSON
     useEffect(()=>{
-        fetch('../../../public/cards.json')
+        fetch('/cards.json')
             .then((res)=>res.json())
             .then((data)=>setPokemon(data.cards))
     },[]);
@@ -48,7 +50,7 @@ export default function Home() {
 
 
             {/* detal */}
-            <div className="container inset-shadow-sm inset-shadow-gray-300 text-gray-400 bg-gray-200 text-4xl flex flex-col  items-center p-3 h-1350 overflow-y-auto ">
+            <div className="container inset-shadow-sm inset-shadow-gray-300 text-gray-400 bg-gray-200 text-4xl flex flex-col  items-center p-3 h-full overflow-y-auto ">
             {favorites.length > 0 ? (
                         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 w-full">
                             {favorites.map((p) => (
