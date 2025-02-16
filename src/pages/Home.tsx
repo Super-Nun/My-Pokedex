@@ -40,7 +40,7 @@ export default function Home() {
         });
 
      // ฟังก์ชันเพิ่มโปเกมอนลงใน Favorites
-        const handleAddFavorite = (p) => {
+        const handleAddFavorite = (p:Pokemon) => {
             if (!favorites.some((fav) => fav.id === p.id)) {
                 setFavorites([...favorites, p]);
             }
@@ -48,7 +48,7 @@ export default function Home() {
         };
 
         //ฟังก์ชันลบโปเกมอนจาก Favorites
-        const handleRemoveFavorite = (id) => {
+        const handleRemoveFavorite = (id:number) => {
             setFavorites(favorites.filter((fav) => fav.id !== id));
         };
 
@@ -157,7 +157,7 @@ export default function Home() {
                                                 {p.retreatCost && (
                                                     <div className="bg-gray-100 p-4 rounded-lg shadow-md">
                                                         <h3 className="text-md font-semibold text-gray-700 mb-1">🏃 Retreat Cost</h3>
-                                                        <p className="text-gray-600 text-sm">{p.retreatCost.join(', ') || '-'}</p>
+                                                        <p className="text-gray-600 text-sm">{p.retreatCost.toString() || '-'}</p>
                                                     </div>
                                                 )}
 
@@ -206,13 +206,13 @@ export default function Home() {
                                         ) : p.supertype === "Trainer" ? (
                                             <div className='ps-10 pe-10 text-gray-600 space-y-5 flex flex-col justify-center text-justify w-2xl'>
                                                 <h2 className='uppercase text-lg'>Trainer Card</h2>
-                                                <p className='font-mono'>{p.text ? p.text.join(" ") : "Trainer Card"}</p>
+                                                <p className='font-mono'>{Array.isArray(p.text) ? p.text.join(" ") : p.text || "NaN"}</p>
                                             </div>
                                         ) : p.supertype === "Energy" ? (
                                             
                                             <div className='ps-10 pe-10 text-gray-600 space-y-5 flex flex-col justify-center text-justify w-2xl'>
                                                 <h2 className='uppercase text-lg'>Energy Card</h2>
-                                                <p className='font-mono'>{p.text ? p.text.join(" ") : "Trainer Card"}</p>
+                                                <p className='font-mono'>{Array.isArray(p.rules) ? p.rules.join(" ") : p.rules || "NaN"}</p>
                                             </div>
                                         ) : null}
 
