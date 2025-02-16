@@ -1,13 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 
 export default function Home() {
     
     // botton+
-    const [showSearch, setShowSearch] = useState(false); 
-    const [search, setSearch] = useState(""); // เก็บค่าค้นหา
-    const [pokemon, setPokemon] = useState([]); // เก็บข้อมูลโปเกมอนทั้งหมด
-    const [favorites, setFavorites] = useState([]); // // เก็บโปเกมอนที่ถูกเลือก'
+    const [showSearch, setShowSearch] = useState<boolean>(false);
+    const [search, setSearch] = useState<string>(""); // เก็บค่าค้นหา
+    const [pokemon, setPokemon] = useState<Pokemon[]>([]); // เก็บข้อมูลโปเกมอนทั้งหมด
+    const [favorites, setFavorites] = useState<Pokemon[]>([]); // เก็บโปเกมอนที่ถูกเลือก
+    
     
 
     // โหลดข้อมูลจาก JSON
