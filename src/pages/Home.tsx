@@ -3,18 +3,20 @@ import { useState, useEffect } from 'react';
 
 export default function Home() {
     interface Pokemon {
-        id: number;
+        id: string;
         name: string;
         imageUrlHiRes: string;
-        nationalPokedexNumber: number;
-        supertype: string;
-        hp: string;
-        type: string;
+        nationalPokedexNumber?: number;
+        hp?: string;
+        type?: string;
+        supertype?: string;
         ability?: { name: string; text: string };
-        retreatCost?: number;
+        retreatCost?: string[];
         weaknesses?: { type: string; value: string }[];
         resistances?: { type: string; value: string }[];
         attacks?: { name: string; damage: string; text: string }[];
+        text?: string[];
+        rules?: string[];
       }
     // botton+
     const [showSearch, setShowSearch] = useState<boolean>(false);
@@ -206,13 +208,15 @@ export default function Home() {
                                         ) : p.supertype === "Trainer" ? (
                                             <div className='ps-10 pe-10 text-gray-600 space-y-5 flex flex-col justify-center text-justify w-2xl'>
                                                 <h2 className='uppercase text-lg'>Trainer Card</h2>
-                                                <p className='font-mono'>{Array.isArray(p.text) ? p.text.join(" ") : p.text || "NaN"}</p>
+                                                <p className='font-mono'>{Array.isArray(p.text) ? p.text.join(" ") : p.ability?.text || "NaN"}</p>
+
                                             </div>
                                         ) : p.supertype === "Energy" ? (
                                             
                                             <div className='ps-10 pe-10 text-gray-600 space-y-5 flex flex-col justify-center text-justify w-2xl'>
                                                 <h2 className='uppercase text-lg'>Energy Card</h2>
-                                                <p className='font-mono'>{Array.isArray(p.rules) ? p.rules.join(" ") : p.rules || "NaN"}</p>
+                                                <p className='font-mono'>{Array.isArray(p.rules) ? p.rules.join(" ") : p.text || "NaN"}</p>
+
                                             </div>
                                         ) : null}
 
